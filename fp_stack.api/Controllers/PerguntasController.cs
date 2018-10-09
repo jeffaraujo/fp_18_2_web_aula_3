@@ -9,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace fp_stack.api.Controllers
 {
-    
-    [Route("api/[controller]")] //Atributo Route para configurar rota pelo Controller 
+    [ApiVersion("1.0")]
+    //[Route("api/[controller]")] //Atributo Route para configurar rota pelo Controller 
+    [Route("api/v{apiVersion}/[controller]")] //Versionando a API (Pelo Controller)
     [ApiController]
     public class PerguntasController : Controller
     {
