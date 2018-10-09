@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fp_stack.core.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,6 +13,7 @@ namespace fp_stack.api.Controllers
     [ApiVersion("1.0")]
     //[Route("api/[controller]")] //Atributo Route para configurar rota pelo Controller 
     [Route("api/v{apiVersion}/[controller]")] //Versionando a API (Pelo Controller)
+    [EnableCors("Default")] //Usando CORS na controller
     [ApiController]
     public class PerguntasController : Controller
     {

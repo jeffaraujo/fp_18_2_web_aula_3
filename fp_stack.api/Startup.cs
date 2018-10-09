@@ -36,10 +36,22 @@ namespace fp_stack.api
             services.AddDbContext<Context>(options => options.UseSqlServer(connection));
 
             services.AddMvc(
-                options => {
+                options =>
+                {
                     options.RespectBrowserAcceptHeader = true; //Respeite o cliente
                     options.OutputFormatters.Add(new XmlSerializerOutputFormatter());//Convertendo de JSON para XML
                 });
+            //Configurando o CORS
+            services.AddCors(x =>
+            {
+                x.AddPolicy("Default",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +76,9 @@ namespace fp_stack.api
             //});
             //Mapeia automáticamente
             app.UseMvcWithDefaultRoute();
+
+
+            app.UseCors("Default");
         }
     }
 }
